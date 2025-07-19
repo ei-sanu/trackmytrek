@@ -57,6 +57,8 @@ export const SignUp: React.FC = () => {
                         routing="path"
                         path="/sign-up"
                         signInUrl="/sign-in"
+                        redirectUrl="/home"
+                        afterSignUpUrl="/home"
                     />
                 </div>
             </div>
