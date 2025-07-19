@@ -1,7 +1,9 @@
-import { SignUp as ClerkSignUp } from "@clerk/clerk-react";
+import { SignUp as ClerkSignUp, useClerk } from "@clerk/clerk-react";
 import React from "react";
 
 export const SignUp: React.FC = () => {
+    const { client } = useClerk();
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0A1933] via-[#0f2447] to-[#1a365d] py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full">
@@ -59,6 +61,9 @@ export const SignUp: React.FC = () => {
                         signInUrl="/sign-in"
                         redirectUrl="/home"
                         afterSignUpUrl="/home"
+                        onError={(error) => {
+                            console.error('Clerk error:', error);
+                        }}
                     />
                 </div>
             </div>

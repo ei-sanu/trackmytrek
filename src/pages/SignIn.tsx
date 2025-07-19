@@ -1,7 +1,15 @@
-import { SignIn as ClerkSignIn } from "@clerk/clerk-react";
+import { SignIn as ClerkSignIn, useSession } from "@clerk/clerk-react";
 import React from "react";
+import { Navigate } from "react-router-dom";
 
 export const SignIn: React.FC = () => {
+    const { session } = useSession();
+
+    // If user is already signed in, redirect to home
+    if (session) {
+        return <Navigate to="/home" replace />;
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0A1933] via-[#0f2447] to-[#1a365d] py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full">
@@ -13,7 +21,7 @@ export const SignIn: React.FC = () => {
                         </span>
                     </h1>
                     <p className="mt-2 text-gray-300">
-                        Sign in or create an account to continue
+                        Sign in to continue your journey
                     </p>
                 </div>
 
