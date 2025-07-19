@@ -1,6 +1,7 @@
 import { Award, Search, TrendingUp, Users } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Clock } from '../components/Clock';
 import { DomainCard } from '../components/DomainCard';
 import { MouseGlow } from '../components/MouseGlow';
 import { OfflineAlert } from '../components/OfflineAlert';
@@ -58,6 +59,7 @@ export const Home: React.FC = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Clock />
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">TrackMyTrek</span>
           </h1>

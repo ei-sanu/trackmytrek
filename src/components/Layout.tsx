@@ -56,7 +56,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             {/* User Menu */}
             <div className="flex items-center space-x-4">
               {isSignedIn ? (
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 ml-4">
                   <span className="text-sm text-gray-300">Welcome, {user.firstName}!</span>
                   <UserButton afterSignOutUrl="/" />
                 </div>
