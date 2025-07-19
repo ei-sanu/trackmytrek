@@ -1,7 +1,8 @@
 import { UserButton, useUser } from '@clerk/clerk-react';
-import { BookOpen, Home, Menu, User, Wrench, X } from 'lucide-react';
+import { BookOpen, Globe, Home, Menu, User, Wrench, X } from 'lucide-react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { MouseGlow } from './MouseGlow';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -24,6 +25,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0A1933] via-[#0f2447] to-[#1a365d]">
+      <MouseGlow />
       {/* Header */}
       <header className="bg-[#0A1933]/95 backdrop-blur-md border-b border-[#1a365d] sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,8 +45,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   key={item.path}
                   to={item.path}
                   className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(item.path)
-                      ? 'bg-blue-600 text-white'
-                      : 'text-gray-300 hover:bg-navy-700 hover:text-white'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-300 hover:bg-navy-700 hover:text-white'
                     }`}
                 >
                   <item.icon className="w-4 h-4" />
@@ -90,8 +92,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors ${isActive(item.path)
-                      ? 'bg-blue-600 text-white'
-                      : 'text-gray-300 hover:bg-navy-700 hover:text-white'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-300 hover:bg-navy-700 hover:text-white'
                     }`}
                 >
                   <item.icon className="w-5 h-5" />
@@ -145,9 +147,18 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             <div>
               <h3 className="text-white font-semibold mb-4">Connect</h3>
-              <p className="text-gray-400 text-sm">
-                Follow us on social media for updates and career tips.
+              <p className="text-gray-400 text-sm mb-4">
+                Check out My Website for updates and career tips related to Front-End and Cybersecurity.
               </p>
+              <a
+                href="https://somesh.social"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
+              >
+                <Globe className="w-5 h-5" />
+                <span>Portfolio</span>
+              </a>
             </div>
           </div>
 

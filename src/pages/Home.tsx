@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Clock } from '../components/Clock';
 import { DomainCard } from '../components/DomainCard';
-import { MouseGlow } from '../components/MouseGlow';
 import { OfflineAlert } from '../components/OfflineAlert';
 import { domains } from '../data/domains';
 
@@ -51,7 +50,6 @@ export const Home: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-      <MouseGlow />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-navy-900 via-slate-900 to-navy-800 py-20">
         <div className="absolute inset-0 opacity-20">
