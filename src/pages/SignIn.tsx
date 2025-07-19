@@ -10,7 +10,7 @@ export const SignIn: React.FC = () => {
                         Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">TrackMyTrek</span>
                     </h1>
                     <p className="mt-2 text-gray-300">
-                        Sign in to continue your tech journe
+                        Sign in to continue your tech journey
                     </p>
                 </div>
 
