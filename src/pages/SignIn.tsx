@@ -1,34 +1,22 @@
-import { SignIn as ClerkSignIn, useSession } from "@clerk/clerk-react";
+import { SignIn as ClerkSignIn } from "@clerk/clerk-react";
 import React from "react";
-import { Navigate } from "react-router-dom";
 
 export const SignIn: React.FC = () => {
-    const { session } = useSession();
-
-    // If user is already signed in, redirect to home
-    if (session) {
-        return <Navigate to="/home" replace />;
-    }
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0A1933] via-[#0f2447] to-[#1a365d] py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full">
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-bold text-white">
-                        Welcome to{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-                            TrackMyTrek
-                        </span>
+                        Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">TrackMyTrek</span>
                     </h1>
                     <p className="mt-2 text-gray-300">
-                        Sign in to continue your journey
+                        Sign in to continue your tech journey
                     </p>
                 </div>
 
                 <div className="bg-navy-800/50 backdrop-blur-sm border border-navy-700 rounded-xl p-8">
                     <ClerkSignIn
                         appearance={{
-                            baseTheme: "dark",
                             elements: {
                                 formButtonPrimary:
                                     "bg-blue-600 hover:bg-blue-700 text-white transition-colors",
@@ -41,30 +29,8 @@ export const SignIn: React.FC = () => {
                                 formFieldInput:
                                     "bg-navy-700/50 border border-navy-600 text-white placeholder-gray-400",
                                 footerActionLink: "text-blue-400 hover:text-blue-300",
-                                dividerLine: "bg-navy-600",
-                                dividerText: "text-gray-400",
-                                formFieldLabelRow: "text-gray-300",
-                                main: "text-white",
-                                navbar: "hidden",
-                                navbarMobileMenuButton: "text-gray-400",
-                                headerBackRow: "text-gray-400",
-                                otpCodeFieldInput: "bg-navy-700/50 border border-navy-600 text-white",
-                            },
-                            variables: {
-                                colorPrimary: "#2563eb",
-                                colorBackground: "#0A1933",
-                                colorText: "#fff",
-                                colorTextSecondary: "#94a3b8",
-                                colorInputBackground: "rgba(15, 23, 42, 0.5)",
-                                colorInputText: "#fff",
-                                colorTextOnPrimaryBackground: "#fff",
                             },
                         }}
-                        routing="path"
-                        path="/sign-in"
-                        signUpUrl="/sign-up"
-                        redirectUrl="/home"
-                        afterSignInUrl="/home"
                     />
                 </div>
             </div>
