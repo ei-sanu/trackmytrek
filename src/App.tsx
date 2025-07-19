@@ -1,4 +1,4 @@
-import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut, SignIn, SignUp } from '@clerk/clerk-react';
+import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from '@clerk/clerk-react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { LoadingProvider } from './components/LoadingProvider';
@@ -10,6 +10,8 @@ import { Home } from './pages/Home';
 import { KnowYourself } from './pages/KnowYourself';
 import { Privacy } from './pages/Privacy';
 import { Profile } from './pages/Profile';
+import { SignIn } from './pages/SignIn';
+import { SignUp } from './pages/SignUp';
 import { Terms } from './pages/Terms';
 import { Test } from './pages/Test';
 import { ToBuild } from './pages/ToBuild';
@@ -31,8 +33,8 @@ function App() {
             <Routes>
               {/* Public routes */}
               <Route path="/" element={<View />} /> {/* Landing page */}
-              <Route path="/sign-in/*" element={<SignIn routing="path" path="/sign-in" />} />
-              <Route path="/sign-up/*" element={<SignUp routing="path" path="/sign-up" />} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUp />} />
               <Route path="/privacy" element={<Layout><Privacy /></Layout>} />
               <Route path="/terms" element={<Layout><Terms /></Layout>} />
 
