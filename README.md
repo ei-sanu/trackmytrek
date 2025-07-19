@@ -3,6 +3,7 @@
 <div align="center">
   <h3>🚀 Navigate Your Tech Career Journey with Confidence</h3>
   <p>A comprehensive platform helping developers explore 30+ technology domains, assess skills, and accelerate career growth through interactive learning and project-based development.</p>
+💡 The name TrackMyTrek represents the continuous tracking of your learning journey (Track) and the adventurous trek through diverse tech fields (Trek).
 </div>
 
 ---
