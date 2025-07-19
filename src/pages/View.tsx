@@ -18,10 +18,16 @@ export const View: React.FC = () => {
                 return;
             }
 
-            // Redirect to sign-up page instead of Google OAuth
-            navigate('/sign-up');
+            await signIn?.authenticateWithRedirect({
+                strategy: "oauth_google",
+                redirectUrl: "/sign-in",
+                afterSignInUrl: "/home",
+            });
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error during sign in:', error);
+            if (error.message?.includes('already signed in')) {
+                navigate('/home');
+            }
         } finally {
             setIsAuthenticating(false);
         }
