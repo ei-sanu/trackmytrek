@@ -1,6 +1,5 @@
 import { SignUp as ClerkSignUp } from "@clerk/clerk-react";
 import React from "react";
-import { Link } from "react-router-dom";
 
 export const SignUp: React.FC = () => {
     return (
@@ -15,15 +14,6 @@ export const SignUp: React.FC = () => {
                     </h1>
                     <p className="mt-2 text-gray-300">
                         Create an account to start your learning journey
-                    </p>
-                    <p className="mt-4 text-gray-400">
-                        Already have an account?{" "}
-                        <Link
-                            to="/sign-in"
-                            className="text-blue-400 hover:text-blue-300 transition-colors"
-                        >
-                            Sign in
-                        </Link>
                     </p>
                 </div>
 
@@ -44,6 +34,9 @@ export const SignUp: React.FC = () => {
                                 footerActionLink: "text-blue-400 hover:text-blue-300",
                             },
                         }}
+                        routing="path"
+                        path="/sign-up"
+                        signInUrl="/sign-in"
                     />
                 </div>
             </div>
