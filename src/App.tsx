@@ -8,7 +8,9 @@ import { Contact } from './pages/Contact';
 import { DomainDetail } from './pages/DomainDetail';
 import { Home } from './pages/Home';
 import { KnowYourself } from './pages/KnowYourself';
+import { Privacy } from './pages/Privacy';
 import { Profile } from './pages/Profile';
+import { Terms } from './pages/Terms';
 import { Test } from './pages/Test';
 import { ToBuild } from './pages/ToBuild';
 import { View } from './pages/View';
@@ -133,6 +135,9 @@ function App() {
                   </SignedOut>
                 </>
               } />
+
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
             </Routes>
           </div>
         </LoadingProvider>
