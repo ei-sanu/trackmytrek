@@ -3,10 +3,10 @@ export interface Project {
   title: string;
   description: string;
   difficulty: 'beginner' | 'intermediate' | 'advance';
-  domain: string;
   technologies: string[];
   estimatedTime: string;
   features: string[];
+  domain: string;
 }
 
 export const projects: Project[] = [
