@@ -15,11 +15,11 @@ import { View } from './pages/View';
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
-if (!clerkPubKey) {
-  throw new Error('Missing Clerk Publishable Key');
-}
-
 function App() {
+  if (!clerkPubKey) {
+    throw new Error('Missing Clerk Publishable Key');
+  }
+
   return (
     <ClerkProvider publishableKey={clerkPubKey}>
       <Router>
@@ -29,8 +29,8 @@ function App() {
             <Routes>
               {/* Public routes */}
               <Route path="/" element={<View />} /> {/* Landing page */}
-              <Route path="/sign-in/*" element={<SignIn routing="path" path="/sign-in" />} />
-              <Route path="/sign-up/*" element={<SignUp routing="path" path="/sign-up" />} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUp />} />
 
               {/* Protected routes */}
               <Route path="/home" element={
