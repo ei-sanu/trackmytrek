@@ -1,15 +1,26 @@
 import { useAuth } from '@clerk/clerk-react';
-import React, { useState } from 'react';
+import { Loader2 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const View: React.FC = () => {
     const { isLoaded, isSignedIn } = useAuth();
     const navigate = useNavigate();
     const [isNavigating, setIsNavigating] = useState(false);
+    const [isAuthenticating, setIsAuthenticating] = useState(false);
+
+    // Add effect to handle auth state changes
+    useEffect(() => {
+        if (isLoaded && isSignedIn) {
+            navigate('/home');
+        }
+    }, [isLoaded, isSignedIn, navigate]);
 
     const handleGetStarted = async () => {
         try {
             setIsNavigating(true);
+            setIsAuthenticating(true);
+
             if (isSignedIn) {
                 navigate('/home');
             } else {
@@ -17,12 +28,13 @@ export const View: React.FC = () => {
             }
         } catch (error) {
             console.error('Navigation error:', error);
-        } finally {
+            // Reset states on error
             setIsNavigating(false);
+            setIsAuthenticating(false);
         }
     };
 
-    const handleSignIn = async () => {
+    const handleSignIn = () => {
         try {
             setIsNavigating(true);
             navigate('/sign-in');
@@ -33,11 +45,22 @@ export const View: React.FC = () => {
         }
     };
 
-    React.useEffect(() => {
-        if (isSignedIn) {
-            navigate('/home');
-        }
-    }, [isSignedIn, navigate]);
+    // Show loading state only during initial load
+    if (!isLoaded) {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0A1933] via-[#0f2447] to-[#1a365d]">
+                <div className="bg-navy-800/30 backdrop-blur-sm border border-navy-700/50 rounded-2xl p-8 md:p-12 text-center">
+                    <Loader2 className="w-12 h-12 mb-4 text-blue-500 animate-spin mx-auto" />
+                    <h2 className="text-xl md:text-2xl font-semibold text-white mb-2">
+                        Getting your account ready...
+                    </h2>
+                    <p className="text-gray-400">
+                        Please wait while we prepare your experience
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0A1933] via-[#0f2447] to-[#1a365d] px-4 sm:px-6 lg:px-8">
