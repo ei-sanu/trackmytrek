@@ -18,27 +18,23 @@ export const View: React.FC = () => {
                 return;
             }
 
-            await signIn?.authenticateWithRedirect({
-                strategy: "oauth_google",
-                redirectUrl: "/sign-in",
-                afterSignInUrl: "/home",
-            });
+            // Navigate to sign-up page instead of Google OAuth
+            navigate('/sign-up');
         } catch (error) {
-            console.error('Error during sign in:', error);
-            if (error.message?.includes('already signed in')) {
-                navigate('/home');
-            }
+            console.error('Error during navigation:', error);
         } finally {
             setIsAuthenticating(false);
         }
     };
 
+    // Redirect to home if already signed in
     React.useEffect(() => {
         if (isSignedIn) {
             navigate('/home');
         }
     }, [isSignedIn, navigate]);
 
+    // Loading state
     if (!isLoaded || isAuthenticating) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
@@ -46,7 +42,7 @@ export const View: React.FC = () => {
                     <div className="w-full h-full border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
                 </div>
                 <p className="text-xl text-blue-200 animate-pulse">
-                    Hang on tight, we're getting the page ready for you...
+                    Loading...
                 </p>
             </div>
         );
@@ -69,12 +65,12 @@ export const View: React.FC = () => {
 
                 <button
                     onClick={handleGetStarted}
-                    disabled={!isLoaded}
+                    disabled={!isLoaded || isAuthenticating}
                     className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-lg
                     font-medium text-xl transition-all duration-300 transform hover:scale-105
                     shadow-lg hover:shadow-blue-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    Get Started
+                    {isAuthenticating ? 'Loading...' : 'Get Started'}
                 </button>
             </div>
         </div>
